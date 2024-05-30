@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<body>
+    <h1>Support Us</h1>
+    <p>您的支持將有助於我們繼續提供高品質的服務和內容。如果您願意支持我們，請考慮捐款。</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="amount">捐款金額：</label>
+        <input type="text" id="amount" name="amount">
+        <button type="submit">捐款</button>
+    </form>
+    <p>或者，您可以通過以下方式聯繫我們進行捐款：</p>
+    <p>電子郵件：support@example.com</p>
+    <p>電話：+1234567890</p>
+</body>
+{% endblock %}

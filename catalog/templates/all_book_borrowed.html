@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>All Borrowed Books</h1>
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>book</th>
+        <th>Due_back</th>
+        <th>Borrower</th>
+        <th>Status</th>
+        <th>Renew</th>
+    </tr>
+</thead>
+
+<tbody>
+{% for obj in bookinstance_list %}
+{% if obj.status == 'o' %}
+<tr>
+    <td><a href="{% url 'book-detail' obj.book.id %}">{{obj.book}}</a></td>
+    <td>{{obj.due_back}}</td>
+    <td>{{obj.borrower}}</td>
+    <td>{{obj.get_status_display}}</td>
+    <td><a href="{% url 'renew-book-librarian' obj.id %}">Renew</a></td>
+</tr>
+
+{% endif %}
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

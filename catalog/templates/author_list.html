@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+
+
+{% block content %}
+
+{% if author_list %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>date_of_birth</th>
+      <th>date_of_death</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  {% for obj in author_list %}
+  <tr>
+  <td><a href="{{ obj.get_absolute_url }}">{{ obj.first_name }}</a></td>
+  <td>{{ obj.last_name }}</td>
+  <td>{{ obj.date_of_birth }}</td>
+  <td>{{ obj.date_of_death}}</td>
+  </tr>
+  {%endfor%}
+  
+</tbody>
+</table>
+{% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}

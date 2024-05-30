@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+
+
+{% block content %}
+{% if book_list %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  {% for obj in book_list %}
+  <tr>
+  <td><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></td>
+  <td>{{ obj.author }}</td>
+  <td>{{ obj.isbn }}</td>
+  <td>{{ obj.language }}</td>
+  </tr>
+  {%endfor%}
+  
+</tbody>
+</table>
+{% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
+

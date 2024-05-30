@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<body>
+    <h1>Search Results</h1>
+    <form action="{% url 'search_books' %}" method="get">
+        <input type="text" name="query" value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    {% if books %}
+        <ul>
+            {% for book in books %}
+            <div style="border: 2px solid black;">
+                <h3><a href="{{ book.get_absolute_url }}">BookName:{{ book.title }}</a></h3>
+                <p>Author:{{book.author}}</p>
+                <p>ISBN:{{book.isbn}}</p>
+                <p>Genre:{{book.genre}}</p>
+                <p>Language:{{book.language}}</p>
+            </div>
+            {% endfor %}
+    {% else %}
+        <p>No books found.</p>
+    {% endif %}
+</body>
+{% endblock %}
